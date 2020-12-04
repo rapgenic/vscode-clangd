@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 
 import {ClangdContext} from './clangd-context';
+import * as cpptoolsDisablePrompt from './cpptools-disable-prompt';
 
 /**
  *  This method is called when the extension is activated. The extension is
@@ -23,5 +24,6 @@ export async function activate(context: vscode.ExtensionContext) {
         await clangdContext.activate(context.globalStoragePath, outputChannel);
       }));
 
+  await cpptoolsDisablePrompt.activate(context);
   await clangdContext.activate(context.globalStoragePath, outputChannel);
 }
